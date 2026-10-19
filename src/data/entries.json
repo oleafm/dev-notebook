@@ -13,7 +13,11 @@
     "codeExample": "const [region, setRegion] = useState('All');\n\n// When a user selects a new region:\nsetRegion('Europe');",
     "insight": "Changing an ordinary variable doesn't notify React that an interface needs updating. React state changes trigger the rendering process.",
     "appliedIn": "Planned for NextHop's Discover filters. Not implemented yet.",
-    "checkQuestions": ["When should I use state instead of a regular variable?", "What is the difference between props and state?", "When should state move into a parent component?"]
+    "checkQuestions": [
+      "When should I use state instead of a regular variable?",
+      "What is the difference between props and state?",
+      "When should state move into a parent component?"
+    ]
   },
   {
     "id": "react-components",
@@ -29,7 +33,11 @@
     "codeExample": "type CampCardProps = { title: string };\n\nfunction CampCard({ title }: CampCardProps) {\n  return <article>{title}</article>;\n}",
     "insight": "A component should have a clear responsibility. It doesn't need to be reusable everywhere to be useful.",
     "appliedIn": "Planned for NextHop's camp cards. Not implemented yet.",
-    "checkQuestions": ["What are props?", "Why split a screen into components?", "How can two components share data?"]
+    "checkQuestions": [
+      "What are props?",
+      "Why split a screen into components?",
+      "How can two components share data?"
+    ]
   },
   {
     "id": "row-level-security",
@@ -45,7 +53,11 @@
     "codeExample": "-- Illustrative policy expression\nauth.uid() = user_id",
     "insight": "Authentication proves who a user is. Authorization decides which resources that user can access.",
     "appliedIn": "Planned for NextHop wishlists. Not implemented yet.",
-    "checkQuestions": ["Why doesn't hiding a button secure data?", "How would I test access with two accounts?", "What is the difference between auth and RLS?"]
+    "checkQuestions": [
+      "Why doesn't hiding a button secure data?",
+      "How would I test access with two accounts?",
+      "What is the difference between auth and RLS?"
+    ]
   },
   {
     "id": "git-vs-github",
@@ -61,7 +73,11 @@
     "codeExample": "git status\ngit add .\ngit commit -m \"Build notebook search\"\ngit push",
     "insight": "A commit should describe a small, meaningful change. Before committing agent-generated code, inspect the diff.",
     "appliedIn": "Planned for the first Developer Notebook repository commit.",
-    "checkQuestions": ["What is a commit?", "How is a push different from a commit?", "When would I create a branch?"]
+    "checkQuestions": [
+      "What is a commit?",
+      "How is a push different from a commit?",
+      "When would I create a branch?"
+    ]
   },
   {
     "id": "typescript-types",
@@ -77,7 +93,11 @@
     "codeExample": "type Camp = {\n  id: string;\n  name: string;\n  priceFrom: number;\n  isActive: boolean;\n};",
     "insight": "Types improve developer feedback, but an API response can still contain unexpected values. Runtime validation may also be necessary.",
     "appliedIn": "This notebook uses KnowledgeEntry and JournalEntry TypeScript types.",
-    "checkQuestions": ["Why use a union type?", "What does an optional property mean?", "Can TypeScript secure data received from an API?"]
+    "checkQuestions": [
+      "Why use a union type?",
+      "What does an optional property mean?",
+      "Can TypeScript secure data received from an API?"
+    ]
   },
   {
     "id": "nextjs-router",
@@ -93,7 +113,11 @@
     "codeExample": "src/app/\n  page.tsx\n  layout.tsx\n  camps/\n    page.tsx\n    [slug]/\n      page.tsx",
     "insight": "Never put secret API keys in code that gets sent to the browser.",
     "appliedIn": "The Developer Notebook home route is implemented at src/app/page.tsx.",
-    "checkQuestions": ["What determines the home page URL?", "Why do we need layout.tsx?", "Which parts of an app need client-side JavaScript?"]
+    "checkQuestions": [
+      "What determines the home page URL?",
+      "Why do we need layout.tsx?",
+      "Which parts of an app need client-side JavaScript?"
+    ]
   },
   {
     "id": "notebook-planning",
@@ -112,6 +136,30 @@
     "verification": "Reviewed and approved an interactive design concept. Production code, persistence, authentication and deployment were not yet completed during this planning session.",
     "lessons": "A clear content model and a well-defined MVP are more useful at this stage than adding advanced features.",
     "next": "Set up the Next.js project, inspect its architecture, and run it locally.",
-    "reflections": ["What product decision did I make?", "What concept did I understand better?", "What would I do differently next time?"]
+    "reflections": [
+      "What product decision did I make?",
+      "What concept did I understand better?",
+      "What would I do differently next time?"
+    ]
+  },
+  {
+    "id": "clone-github-project-locally",
+    "kind": "knowledge",
+    "title": "Cloning and Running a GitHub Project Locally",
+    "summary": "Download an existing repository at a specified branch, install locked dependencies, and run its development server.",
+    "createdAt": "2026-10-19",
+    "updatedAt": "2026-10-19",
+    "category": "Workflow",
+    "bubbleReference": "Opening an existing Bubble app in development mode",
+    "explanation": "To run an existing code-based project locally, first clone its GitHub repository and check out the required branch, move into its folder, install its dependencies, and run its development script. You normally clone only once; on later days, reopen the existing folder and run the development server. Prerequisites for this example are Git and Node.js 24, with npm available.",
+    "bubbleAnalogy": "Opening an existing Bubble app in development mode is a useful conceptual comparison. With a local Next.js project, you explicitly download source code, select a Git branch, install libraries and start the development server on your own machine.",
+    "codeExample": "git clone --branch claude/harvest-app-clone-00J4e https://github.com/oleafm/dailyfm.git\ncd dailyfm\nnpm ci\nnpm run dev\n\n# Then open http://localhost:3000 (unless the terminal shows a different port).",
+    "insight": "git clone makes the local copy and --branch chooses the branch to check out; cd enters the project folder; npm ci installs from the existing package-lock.json without changing dependency resolution; npm run dev executes the dev script defined in package.json. git pull is for retrieving updates when a repository is already cloned. A lockfile is required for npm ci. This is a workflow reference, not confirmation that the example was run and tested.",
+    "appliedIn": "Setup instructions for dailyfm, branch claude/harvest-app-clone-00J4e. The provided instructions say no Supabase credentials are needed for this run; this has not been independently verified.",
+    "checkQuestions": [
+      "How do git clone and git pull differ?",
+      "Why run cd dailyfm before npm ci?",
+      "How is npm ci different from npm install, and where does npm run dev get its command?"
+    ]
   }
 ]
