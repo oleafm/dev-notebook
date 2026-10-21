@@ -115,3 +115,37 @@ button:disabled{cursor:not-allowed}
 @media(max-width:950px){.entry-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:65px}.container{width:min(100% - 46px,1120px)}}
 @media(max-width:640px){.container{width:calc(100% - 36px)}.top-inner{height:76px}.header-right small,.header-divider{display:none}.header-right{font-size:9px}.brand-copy small{font-size:9px}.brand-copy strong{font-size:13px}.hero{padding:52px 0 33px}.hero h1{font-size:44px}.hero>p:not(.eyebrow){font-size:13px}.toolbar{align-items:stretch;flex-direction:column}.tabs{align-self:flex-start}.tab{padding:11px 14px}.toolbar-actions{flex-wrap:nowrap}.search-box{min-width:0;flex:1;width:auto}.new-entry{padding:12px}.export-button{display:none}.entry-grid{grid-template-columns:1fr}.entry-card{min-height:190px}.entry-card-top{margin-bottom:24px}.filters{margin-bottom:26px}.journal-card{gap:13px;padding:19px}.journal-date{flex-basis:67px;font-size:11px}.journal-body h3{font-size:18px}.footer{flex-direction:column}.two-fields{grid-template-columns:1fr}.editor-dialog{padding:20px}.editor-actions{flex-wrap:wrap}.editor-actions>div{margin-left:auto}}
 @media(prefers-reduced-motion:reduce){.entry-card,.journal-card{transition:none}html{scroll-behavior:auto}}
+
+/* Quick Capture */
+.quick-open{border:1px solid #8d7258;border-radius:100px;background:#2b221c;color:#e6c6a1;padding:12px 16px;font-size:12px}
+.quick-open:hover{background:#382b21}
+.quick-dialog{width:min(1100px,100%);max-height:93vh;display:flex;flex-direction:column;background:#151314;border:1px solid #574433;border-radius:20px;overflow:hidden}
+.quick-header{display:flex;justify-content:space-between;gap:18px;padding:28px 34px;border-bottom:1px solid #342b28}
+.quick-header .eyebrow{font-size:10px;margin-bottom:11px}
+.quick-header h2{font-size:30px;letter-spacing:-.04em;font-weight:610;margin:0 0 8px}
+.quick-header p:last-child{color:#a99e99;font-size:13px;margin:0}
+.quick-body{display:grid;grid-template-columns:1fr 1fr;min-height:0;overflow:hidden}
+.quick-input-area{padding:27px 30px;border-right:1px solid #362d28;display:flex;flex-direction:column;gap:13px;min-width:0}
+.quick-input-area>label,.quick-preview-head{font-size:11px;color:#cbae89;letter-spacing:.07em}
+.quick-input-area>textarea{width:100%;resize:vertical;min-height:230px;flex:1;background:#1d1918;border:1px solid #493b32;border-radius:13px;padding:18px;color:#eee5df;font-size:13px;line-height:1.75}
+.quick-input-footer,.quick-preview-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.quick-input-footer>span,.quick-hint{color:#918780;font-size:11px;line-height:1.6}
+.quick-input-area>.button-solid{align-self:flex-start}
+.quick-hint{margin:0}
+.quick-preview{padding:27px 30px;overflow-y:auto;min-height:300px;max-height:60vh}
+.quick-preview-head span:last-child{font-size:10px;color:#8d8078}
+.quick-empty{min-height:250px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+.quick-empty>span{font-size:25px;color:#c4a17b;margin-bottom:20px}
+.quick-empty strong{font-size:17px;letter-spacing:-.02em;font-weight:550}
+.quick-empty p{font-size:12px;color:#9c918b;line-height:1.8;max-width:290px}
+.quick-edit-fields{display:flex;flex-direction:column;gap:17px;margin-top:20px}
+.quick-edit-fields label{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#d4b89a}
+.quick-edit-fields input,.quick-edit-fields select,.quick-edit-fields textarea{background:#1c1919;color:#f2eae5;border:1px solid #463a34;border-radius:10px;padding:12px;font-size:13px;line-height:1.65;width:100%}
+.quick-edit-fields textarea{resize:vertical}
+.quick-actions{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:17px 30px;border-top:1px solid #3b302a;background:#1b1716}
+.quick-actions>span{color:#97887e;font-size:11px}
+.quick-actions>div{display:flex;gap:10px}
+.quick-dialog button:disabled{opacity:.45;cursor:not-allowed}
+.quick-error,.quick-confirm{margin:0;padding:12px 30px;background:#30201e;color:#f6bcb0;font-size:12px}
+.quick-confirm{display:flex;align-items:center;gap:12px}
+@media(max-width:750px){.quick-dialog{max-height:100dvh;border-radius:0;height:100dvh}.quick-body{grid-template-columns:1fr;overflow-y:auto}.quick-input-area{border-right:0;border-bottom:1px solid #362d28}.quick-preview{max-height:none;overflow:visible}.quick-actions{flex-wrap:wrap}.quick-header{padding:23px}.quick-input-area,.quick-preview{padding:22px}.quick-open{padding:11px 12px}}
