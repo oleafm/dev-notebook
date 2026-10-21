@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Entry, EntryCategory, KnowledgeEntry, Tab } from '@/lib/types';
 import { EntryReader } from './EntryReader';
 import { EntryEditor } from './EntryEditor';
+import { QuickCapture } from './QuickCapture';
 
 const STORAGE_KEY = 'developer-notebook-local-v1';
 
@@ -18,6 +19,7 @@ export function NotebookApp({ initialEntries, authoringEnabled }: { initialEntri
   const [search, setSearch] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [editorOpen, setEditorOpen] = useState(false);
+  const [quickOpen, setQuickOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [notice, setNotice] = useState('');
 
@@ -121,7 +123,7 @@ export function NotebookApp({ initialEntries, authoringEnabled }: { initialEntri
             <button type="button" role="tab" aria-selected={tab === 'journal'} className={tab === 'journal' ? 'tab active' : 'tab'} onClick={() => changeTab('journal')}>Build Journal <span className="tab-count">{String(entries.filter(e => e.kind === 'journal').length).padStart(2, '0')}</span></button>
           </div>
           <div className="toolbar-actions"><label className="search-box"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><span className="sr-only">Search notebook entries</span><input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search my notes..." type="search" /></label>
-            {authoringEnabled && <><button className="new-entry" type="button" onClick={() => { setEditingId(null); setEditorOpen(true); }}>+ New entry</button><button className="export-button" type="button" title="Export all notes as entries.json" onClick={exportEntries}>Export ↗</button></>}
+            {authoringEnabled && <><button type="button" className="quick-open" onClick={() => setQuickOpen(true)}>✳ Quick Capture</button><button className="new-entry" type="button" onClick={() => { setEditingId(null); setEditorOpen(true); }}>+ New entry</button><button className="export-button" type="button" title="Export all notes as entries.json" onClick={exportEntries}>Export ↗</button></>}
           </div>
         </div>
         {tab === 'knowledge' && <div className="filters" aria-label="Category filters">{categories.map(c => <button type="button" key={c} className={category === c ? 'filter active' : 'filter'} onClick={() => setCategory(c)}>{c}</button>)}</div>}
@@ -132,6 +134,7 @@ export function NotebookApp({ initialEntries, authoringEnabled }: { initialEntri
       {notice && <div className="status-notice" role="status">{notice}<button type="button" aria-label="Dismiss notice" onClick={() => setNotice('')}>×</button></div>}
       <footer className="footer"><span>Developer Notebook © 2026</span><span>{authoringEnabled ? 'Local writing mode · changes stay in your browser until exported' : 'Public reading edition · learning by building'}</span></footer>
     </main>
+    {quickOpen && authoringEnabled && <QuickCapture onClose={() => setQuickOpen(false)} onSave={entry => { saveEntry(entry); setQuickOpen(false); }} />}
     {editorOpen && authoringEnabled && <EntryEditor key={editingId ?? `new-${tab}`} kind={tab} entry={entries.find(entry => entry.id === editingId)} onSave={saveEntry} onClose={() => { setEditorOpen(false); setEditingId(null); }} />}
   </div>;
 }
